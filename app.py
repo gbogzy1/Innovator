@@ -9,6 +9,7 @@ from transformers import pipeline
 # Loading env files
 load_dotenv(find_dotenv())
 
+Youtube_API_KEY = st.secrets["YTA_API_KEY"]
 # Page title
 st.set_page_config(page_title="AVA", page_icon=":robot_face:")
 st.title("Truth Trace: Unveiling Transparency in Youtube Discourse")
@@ -42,10 +43,9 @@ def process_youtube_link(youtube_link):
     if video_id:
         try:
             # Fetch transcript
-            yt_fetcher = YouTubeTranscriptFetcher(api_key=os.environ["YTA_API_KEY"])
+            yt_fetcher = YouTubeTranscriptFetcher(api_key=Youtube_API_KEY)
             txt_analysis = TextAnalyser()
             transcript = yt_fetcher.get_transcript(video_id)
-
 
             transcript = transcript.replace('.','.<eos>')
             transcript = transcript.replace('?','?<eos>')

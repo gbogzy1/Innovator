@@ -79,6 +79,3 @@ class TextAnalyser:
 
         # Concatenate the summaries
         return ' '.join([summary['summary_text'] for summary in summaries])
-
-yt = YouTubeTranscriptFetcher('AIzaSyA5bVbQyryIq9TZFD9YfWSz-ubGcVR29so')
-
